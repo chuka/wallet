@@ -1,14 +1,13 @@
 const mongoose = require('mongoose')
 
 const transactionSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.objectId,
   date:{
   	  type:Date,
   	  required:true
   },
 
   sender_id:{
-  	type:mongoose.Schema.Types.objectId,
+  	type:mongoose.Schema.Types.ObjectId,
   	required:true,
   	ref:'User'
   },

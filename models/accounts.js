@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const accountSchema   = mongoose.Schema({
-	  _id:mongoose.Schema.Types.objectId,
       name:{
       	type:String,
       	required:true
@@ -13,7 +12,7 @@ const accountSchema   = mongoose.Schema({
      balance:{
      	type:Number,
      	required:true,
-     	default:0.0
+     	default:0
      },
 
      number:{
@@ -22,7 +21,7 @@ const accountSchema   = mongoose.Schema({
      	unique:true
      },
      user_id:{
-     	type:mongoose.Schema.Types.objectId,
+     	type:mongoose.Schema.Types.ObjectId,
      	ref:'User',
      	required:true
      }
