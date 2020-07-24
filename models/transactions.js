@@ -12,12 +12,12 @@ const transactionSchema = mongoose.Schema({
   	ref:'User'
   },
 
-  recipient:{
-  	type:String,
-  	required:true
-  }
+  sender_name:{
+    type:String,
+    required:true
+  },
 
-  recipient_account :{
+  recipient:{
   	type:String,
   	required:true
   },
@@ -35,7 +35,6 @@ const transactionSchema = mongoose.Schema({
   	type:String,
   	required:true
   }
-
 
 })
 

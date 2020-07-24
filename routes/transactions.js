@@ -55,6 +55,10 @@ route.post('/transfer',async(req,res)=>{
         })
     }
      let new_balance = balance - amount
+
+     //update the balance
+      const updated_balance =await Account.updateOne({_id:sender_id},{$set:{balance:new_balance}})
+
       const new_transaction = new Transaction({
         	sender_id:sender_id,
         	sender_name:sender_name,
@@ -62,11 +66,13 @@ route.post('/transfer',async(req,res)=>{
         	amount:amount,
         	description:description,
         	status:'success',
-        	date:new Date()
+        	date:new Date(),
+        	balance:new_balance
         })
 
       const receipt = await new_transaction.save()
-      //update the balance
+          res.send(receipt)
+       
 
    	 }catch(err){
    	 	res.send(err)

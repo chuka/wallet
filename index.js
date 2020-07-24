@@ -11,12 +11,14 @@ const cors =  require('cors')
 const userRoute = require('./routes/users.js')
 const transactionRoute = require('./routes/transactions.js')
 const accountRoute = require('./routes/accounts.js')
+const topupRoute =require('./routes/topup.js')
 
 app.use(express.json())
 app.use(cors())
 app.use('/transactions',transactionRoute)
 app.use('/accounts',accountRoute)
 app.use('/users',userRoute)
+app.use('/paystack/pay',topupRoute)
 
 const uri = process.env.DB_CONNECTION
 
