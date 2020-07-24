@@ -82,5 +82,49 @@ route.post('/transfer',async(req,res)=>{
 })
 
 
+//GET ALL TRANSACTIONS
+route.get('/',async(req,res)=>{
+	try{
+		const transactions = await Transaction.find()
+	if(transactions.length >0){
+		res.status(200).send(transactions)
+	}
+	return res.status(400).send("transaction database is empty")
+	}catch(err){
+		res.send(err)
+	}
+	})
+
+
+//GET ONE TRANSACTION
+route.get('/:id',async(req,res)=>{
+	try{
+		 const transaction = await Transaction.find({_id:req.params.transaction_id})
+	    if(transaction){
+		res.status(200).send('transaction')
+	}
+	return res.status(400).send('no such transactions exist!')
+	}catch(err){
+		res.send(err)
+	}
+	
+}) 
+
+//GET ALL TRANSACTIONS FOR A USER
+
+route.get('/user/:id',async(req,res)=>{
+	if(req.body){
+		try{
+		const transactions = await Transactions.find({sender_id:req.params.user_id})
+		res.status(200).send(transactions)
+	}catch(err){
+		res.send(err)
+	}
+
+	}
+	})
+
+// CANCEL A TRANSACTION
+
 
 module.exports = route
