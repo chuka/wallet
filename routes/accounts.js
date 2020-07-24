@@ -23,4 +23,6 @@ route.post('/open-account',async(req,res)=>{
 	
 })
 
+// CLOSE  A WALLET
+
 module.exports = route

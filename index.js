@@ -18,11 +18,11 @@ app.use(cors())
 app.use('/transactions',transactionRoute)
 app.use('/accounts',accountRoute)
 app.use('/users',userRoute)
-app.use('/paystack/pay',topupRoute)
+app.use('/topup',topupRoute)
 
-const uri = process.env.DB_CONNECTION
 
-mongoose.connect(uri,{useNewUrlParser:true},()=>{
+
+mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser:true},()=>{
 	console.log('database connected')
 })
 
